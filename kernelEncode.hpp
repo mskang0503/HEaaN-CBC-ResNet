@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <cstdlib>
 #include "HEaaN/heaan.hpp"
 #include "convtools.hpp"
 #include "imageEncode.hpp"
@@ -12,6 +13,10 @@
 
      string line;
      ifstream input_file(filename);
+     if (!input_file.is_open()) {
+         cerr << "Could not open the file - '" + filename + "'\n";
+         abort();
+     }
 
      while (getline(input_file, line)) {
          double temp = stod(line);

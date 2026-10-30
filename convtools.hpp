@@ -175,6 +175,7 @@ void weightToPtxt32(Plaintext &ptxt, u64 level, vector<double> weights,
     //n_ch : number of channels in each ctxt. 4 or 16
     u64 n_ch = weights.size();
     Message msg(15);
+    size_t num_slots = 32768;
 
     //zeroize message first
     for (size_t j = 0; j < num_slots; ++j) {

@@ -103,7 +103,7 @@ int main() {
     #pragma omp parallel for
     for (int i = (num-1) * 16; i < num*16; ++i) { // 313
         int ind = i+1;
-        string str = "/app/HEAAN-ResNet/image/image_" + to_string(ind) + string(".txt");
+        string str = DATA_DIR "/image/image_" + to_string(ind) + string(".txt");
         vector<double> temp;
         txtreader(temp, str);
         imageCompiler(context, pack, enc, 5, temp, imageVec[(i%16)]);
@@ -120,8 +120,8 @@ int main() {
     
     
     ////////////////common path//////////////////////////////////
-    string common_path_mult = "/app/HEAAN-ResNet/kernel/ResNet20/multiplicands/";
-    string common_path_sum = "/app/HEAAN-ResNet/kernel/ResNet20/summands/";
+    string common_path_mult = DATA_DIR "/kernel/ResNet20/multiplicands/";
+    string common_path_sum = DATA_DIR "/kernel/ResNet20/summands/";
     ////////////////////////////////////////////////////////////
     
     //// 0st conv ///
@@ -441,7 +441,7 @@ int main() {
     
     cout << "[ ";
     
-    string savelabel = string("/app/output20/bundle")+to_string(num)+".txt";
+    string savelabel = string("resnet20_bundle")+to_string(num)+".txt";
     ofstream filesave(savelabel);
     
     for (int i = 0; i < 512; ++i) {
@@ -459,6 +459,11 @@ int main() {
     
     filesave.close();
     cout << "]\n";
+
+    if (!filesave) {
+        cerr << "Could not write the predictions to '" << savelabel << "' (they are printed above)" << endl;
+        return 1;
+    }
 
     cout <<" end...\n";
     

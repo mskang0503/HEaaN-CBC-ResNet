@@ -98,7 +98,7 @@ int main() {
     #pragma omp parallel for
     for (int i = (num-1) * 16; i < num*16; ++i) { // 313
         int ind = i+1;
-        string str = "/app/HEAAN-ResNet-110/image/image_" + to_string(ind) + string(".txt");
+        string str = DATA_DIR "/image/image_" + to_string(ind) + string(".txt");
         vector<double> temp;
         txtreader(temp, str);
         imageCompiler(context, pack, enc, 5, temp, imageVec[(i%16)]);
@@ -115,8 +115,8 @@ int main() {
    
     
     ////////////////common path//////////////////////////////////
-    string common_path_mult = "/app/HEAAN-ResNet/kernel/ResNet110/multiplicands/";
-    string common_path_sum = "/app/HEAAN-ResNet/kernel/ResNet110/summands/";
+    string common_path_mult = DATA_DIR "/kernel/ResNet110/multiplicands/";
+    string common_path_sum = DATA_DIR "/kernel/ResNet110/summands/";
     ////////////////////////////////////////////////////////////
    
     
@@ -229,12 +229,6 @@ int main() {
     layer2_block3_out.clear();
     layer2_block3_out.shrink_to_fit();
 
-    // result save.
-    cout << "saving layer2_RB5 ctxt_result_bundel.." << endl;
-    string savepath1 = "/app/result/layer2_RB5/";
-    saveMsgBundle(dec, sk, layer2_block4_out,savepath1);    
-    cout << "done" << endl;
-
 
     //////////RB6///////////
     std::cout << "layer2_RB6 .. " << std::endl;
@@ -325,12 +319,6 @@ int main() {
     
     layer2_block8_out.clear();
     layer2_block8_out.shrink_to_fit();
-
-     // result save.
-    cout << "saving layer2_RB10 ctxt_result_bundel.." << endl;
-    string savepath2 = "/app/result/layer2_RB10/";
-    saveMsgBundle(dec, sk, layer2_block9_out,savepath2);    
-    cout << "done" << endl;
 
 
     //////////RB11///////////
@@ -423,12 +411,6 @@ int main() {
     layer2_block13_out.clear();
     layer2_block13_out.shrink_to_fit();
 
-     // result save.
-    cout << "saving layer2_RB15 ctxt_result_bundel.." << endl;
-    string savepath3 = "/app/result/layer2_RB15/";
-    saveMsgBundle(dec, sk, layer2_block14_out,savepath3);    
-    cout << "done" << endl;   
-
     //////////RB16///////////
     std::cout << "layer2_RB16 .. " << std::endl;
     vector<vector<Ciphertext>> layer2_block15_out;
@@ -483,12 +465,6 @@ int main() {
     layer2_block16_out.clear();
     layer2_block16_out.shrink_to_fit();
 
-     // result save.
-    cout << "saving layer2_RB18 ctxt_result_bundel.." << endl;
-    string savepath4 = "/app/result/layer2_RB18/";
-    saveMsgBundle(dec, sk, layer2_block17_out, savepath4);    
-    cout << "done" << endl;   
-
     
     ////////////////////
     /////// DSB1 ///////
@@ -513,12 +489,6 @@ int main() {
     
     layer2_block17_out.clear();
     layer2_block17_out.shrink_to_fit();
-
-     // result save.
-    cout << "saving DSB1 ctxt_result_bundel.." << endl;
-    string savepath5 = "/app/result/DSB1/";
-    saveMsgBundle(dec, sk, layer3_block0_out, savepath5);    
-    cout << "done" << endl;   
     
 
     //////////RB20///////////////
@@ -612,12 +582,6 @@ int main() {
     layer3_block4_out.clear();
     layer3_block4_out.shrink_to_fit();
 
-     // result save.
-    cout << "saving layer3_RB5 ctxt_result_bundel.." << endl;
-    string savepath6 = "/app/result/layer3_RB5/";
-    saveMsgBundle(dec, sk, layer3_block5_out,savepath6);    
-    cout << "done" << endl;   
-
     //////////RB25///////////////
     std::cout << "layer3_RB6 .. " << std::endl;
     vector<vector<Ciphertext>> layer3_block6_out;
@@ -707,12 +671,6 @@ int main() {
     
     layer3_block9_out.clear();
     layer3_block9_out.shrink_to_fit();
-
-     // result save.
-    cout << "saving layer3_RB10 ctxt_result_bundel.." << endl;
-    string savepath7 = "/app/result/layer3_RB10/";
-    saveMsgBundle(dec, sk, layer3_block10_out,savepath7);    
-    cout << "done" << endl; 
 
      //////////RB30///////////////
     std::cout << "layer3_RB11 .. " << std::endl;
@@ -804,12 +762,6 @@ int main() {
     layer3_block14_out.clear();
     layer3_block14_out.shrink_to_fit();
 
-     // result save.
-    cout << "saving layer3_RB15 ctxt_result_bundel.." << endl;
-    string savepath8 = "/app/result/layer3_RB15/";
-    saveMsgBundle(dec, sk, layer3_block15_out,savepath8);    
-    cout << "done" << endl; 
-
       //////////RB35///////////////
     std::cout << "layer3_RB16 .. " << std::endl;
     vector<vector<Ciphertext>> layer3_block16_out;
@@ -846,12 +798,6 @@ int main() {
     layer3_block16_out.clear();
     layer3_block16_out.shrink_to_fit();
 
-      // result save.
-    cout << "saving layer3_RB17 ctxt_result_bundel.." << endl;
-    string savepath9 = "/app/result/layer3_RB17/";
-    saveMsgBundle(dec, sk, layer3_block17_out,savepath9);    
-    cout << "done" << endl; 
-
     ////////////////////
     /////// DSB2 ///////
     ////////////////////
@@ -873,12 +819,6 @@ int main() {
     dec.decrypt(ctxt_block7relu1_out[0][0], sk, dmsg);
     printMessage(dmsg);
     cout <<"\n";
-
-      // result save.
-    cout << "saving DSB2 ctxt_result_bundel.." << endl;
-    string savepath10 = "/app/result/DSB2/";
-    saveMsgBundle(dec, sk, ctxt_block7relu1_out,savepath10);    
-    cout << "done" << endl; 
 
 
     //////////RB38///////////////
@@ -971,12 +911,6 @@ int main() {
     layer4_block4_out.clear();
     layer4_block4_out.shrink_to_fit();
 
-      // result save.
-    cout << "saving layer4_RB5 ctxt_result_bundel.." << endl;
-    string savepath11 = "/app/result/layer4_RB5/";
-    saveMsgBundle(dec, sk, layer4_block5_out,savepath11);    
-    cout << "done" << endl; 
-
      //////////RB43///////////////
     std::cout << "layer4_RB6 .. " << std::endl;
     vector<vector<Ciphertext>> layer4_block6_out;
@@ -1066,12 +1000,6 @@ int main() {
     
     layer4_block9_out.clear();
     layer4_block9_out.shrink_to_fit();
-
-      // result save.
-    cout << "saving layer4_RB10 ctxt_result_bundel.." << endl;
-    string savepath12 = "/app/result/layer4_RB10/";
-    saveMsgBundle(dec, sk, layer4_block10_out,savepath12);    
-    cout << "done" << endl;
 
      //////////RB48///////////////
     std::cout << "layer4_RB11 .. " << std::endl;
@@ -1163,12 +1091,6 @@ int main() {
     layer4_block14_out.clear();
     layer4_block14_out.shrink_to_fit();
 
-
-      // result save.
-    cout << "saving layer4_RB15 ctxt_result_bundel.." << endl;
-    string savepath13 = "/app/result/layer4_RB15/";
-    saveMsgBundle(dec, sk, layer4_block15_out,savepath13);    
-    cout << "done" << endl;
     
 
      //////////RB53///////////////
@@ -1207,12 +1129,6 @@ int main() {
     
     layer4_block16_out.clear();
     layer4_block16_out.shrink_to_fit();
-
-      // result save.
-    cout << "saving layer4_RB17 ctxt_result_bundel.." << endl;
-    string savepath14 = "/app/result/layer4_RB17/";
-    saveMsgBundle(dec, sk, layer4_block17_out,savepath14);    
-    cout << "done" << endl;
     
 
     /////////////////////////////////////
@@ -1240,7 +1156,7 @@ int main() {
     timer.start(" FC64 layer * ");
     vector<double> temp21;
     vector<vector<Plaintext>> fclayermultiplicands10_64(10, vector<Plaintext>(64, ptxt_init));
-    string path56 = "/app/HEAAN-ResNet-110/resnet110/multiplicands/" + string("fc_weight_10_64.txt");
+    string path56 = common_path_mult + string("fc_weight_10_64.txt");
     double cnst2 = (double)(1.0 / 64.0);
     Scaletxtreader(temp21, path56,cnst2);
     
@@ -1258,7 +1174,7 @@ int main() {
 
     vector<double> temp21a;
     vector<Plaintext> fclayersummands10(10, ptxt_init);
-    string path56a = "/app/HEAAN-ResNet-110/resnet110/summands/" + string("fc_bias_10.txt");
+    string path56a = common_path_sum + string("fc_bias_10.txt");
 
     double cnst1 = (double)(1.0 / 40.0);
     Scaletxtreader(temp21a, path56a, cnst1);
@@ -1324,7 +1240,7 @@ int main() {
     
     cout << "[ ";
     
-    string savelabel = string("/app/output110/bundle")+to_string(num)+".txt";
+    string savelabel = string("resnet110_bundle")+to_string(num)+".txt";
     ofstream filesave(savelabel);
     
     for (int i = 0; i < 512; ++i) {
@@ -1342,6 +1258,11 @@ int main() {
     
     filesave.close();
     cout << "]\n";
+
+    if (!filesave) {
+        cerr << "Could not write the predictions to '" << savelabel << "' (they are printed above)" << endl;
+        return 1;
+    }
 
     cout <<" end...\n";
     
