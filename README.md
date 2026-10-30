@@ -73,7 +73,7 @@ encryption is randomized, so a few predictions close to a decision boundary can 
 ## Citation
 
 ```bibtex
-@article{CKK+25,
+@article{CKK+24,
   author  = {Cheon, Jung Hee and Kang, Minsik and Kim, Taeseong and Jung, Junyoung and Yeo, Yongdong},
   title   = {Batch Inference on Deep Convolutional Neural Networks With Fully Homomorphic Encryption Using Channel-By-Channel Convolutions},
   journal = {IEEE Transactions on Dependable and Secure Computing},
